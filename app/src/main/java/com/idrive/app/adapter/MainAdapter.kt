@@ -7,6 +7,9 @@ import com.idrive.app.databinding.ItemsRowBinding
 import com.idrive.app.model.TouristModel
 
 class MainAdapter(private val list: List<TouristModel>) : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
+    private var isLoading = false
+    private val VIEWTYPE_LIST = 1
+    private val VIEWTYPE_PROGRESS = 2
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -23,6 +26,10 @@ class MainAdapter(private val list: List<TouristModel>) : RecyclerView.Adapter<M
 
     override fun getItemCount(): Int {
         return list.size
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return super.getItemViewType(position)
     }
 
     class MainViewHolder(val binding: ItemsRowBinding) : RecyclerView.ViewHolder(binding.root) {
